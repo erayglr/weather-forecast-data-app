@@ -1,10 +1,11 @@
 import requests
+import os
 
-API_KEY = "67dda7847943614020cc86fa1612877e"
+API_KEY = os.getenv("forecast_api")
 
 
 def get_data(place, forecast_days=None):
-    url = f"http://api.openweathermap.org/data/2.5/forecast?q={place}&appid={API_KEY}"
+    url = f"https://api.openweathermap.org/data/2.5/forecast?q={place}&appid={API_KEY}"
     respond = requests.get(url)
     data = respond.json()
     filtered_data = data["list"]
